@@ -4,9 +4,9 @@
   $(function() {
     var $textarea = $('#fa-generated-message');
     var $title = $('#fa-generated-title');
-    var $form = $('#fa-generated-form');
+    var $btn = $('#fa-generated-form .post-button');
 
-    $form.on('submit', function(event) {
+    $btn.on('click', function(event) {
       
       if ($textarea.length === 0) {
         event.preventDefault();
