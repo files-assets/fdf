@@ -4,10 +4,12 @@
   $(function() {
     var $textarea = $('#fa-generated-message');
     var $title = $('#fa-generated-title');
+    var $form = $('#fa-generated-form');
 
-    $('input, select, textarea').on('focusout', function(event) {
+    $form.on('submit', function(event) {
       
       if ($textarea.length === 0) {
+        event.preventDefault();
         alert('Tente novamente!');
         return false;
       }
