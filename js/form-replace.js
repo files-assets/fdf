@@ -8,7 +8,7 @@
 
     $form.on('submit', function(event) {
       
-      if ($textarea.length === 0 && $title.lenght === 0) {
+      if ($textarea.length === 0) {
         alert('Tente novamente!');
         return false;
       }
