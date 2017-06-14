@@ -14,12 +14,14 @@
         return false;
       }
 
-      event.preventDefault();
-
       $textarea.val($textarea.val().replace(/\{\{campo(\d+)\}\}/gi, function(text, match) {
         return $('#campo' + match).val();
       }));
 
+      if ($title.length === 0) {
+        return;
+      }
+      
       $title.val($title.val().replace(/\{\{campo(\d+)\}\}/gi, function(text, match) {
         return $('#campo' + match).val();
       }));
