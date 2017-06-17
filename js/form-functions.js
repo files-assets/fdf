@@ -1,4 +1,7 @@
 /*globals jQuery, Clipboard*/
+/*
+ * @author Luiz~
+ */
 (function ($) {
   'use strict';
 
