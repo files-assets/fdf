@@ -1,11 +1,7 @@
      
 # Repositório: FDF
-Scripts especiais para o Fórum dos Fóruns.
 
----
+Scripts especiais & tutoriais para o [Fórum dos Fóruns](http://ajuda.forumeiros.com/forum).  
+Neste repositório, você achará diversos tutoriais para personalizar o seu fórum forumeiros!  
 
-Você poderá achar útil:  
-[form-replace.js](/js/form-replace.js)  
-[form-functions.js](/js/form-functions.js)
-  
-o/
+Os códigos dentro do diretório `/tutorials` estão sob a [Licença MIT](https://github.com/lffg/fdf/blob/master/LICENSE).
