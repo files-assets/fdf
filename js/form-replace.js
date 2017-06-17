@@ -1,3 +1,6 @@
+/*
+ * @author Luiz~
+ */
 (function($) {
   'use strict';
 
