@@ -1,7 +1,5 @@
      
-# Repositório: FDF
+# Repositório: FDF `gh-pages`
 
-Scripts especiais & tutoriais para o [Fórum dos Fóruns](http://ajuda.forumeiros.com/forum).  
-Neste repositório, você achará diversos tutoriais para personalizar o seu fórum forumeiros!  
-
-Os códigos dentro do diretório `/tutorials` estão sob a [Licença MIT](https://github.com/lffg/fdf/blob/master/LICENSE).
+Arquivos referentes ao Gerador de Formulários 2.0 do Fórum dos Fóruns.  
+O uso destes arquivos é destinado **somente** aos **Fóruns de Suporte Oficiais** da Forumeiros.
