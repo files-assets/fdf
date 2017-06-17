@@ -14,5 +14,5 @@ Feito isso, crie uma nova página JavaScript, com investimento em **todas as pá
 
 ### Considerações Finais
 
-Feito por [Luiz~](http://ajuda.forumeiros.com/u60563).
+Feito por [Luiz~](http://ajuda.forumeiros.com/u60563).  
 Agradecimentos especiais à [Dave Gandy, pelos ícones da FontAwesome](http://fontawesome.io/).
