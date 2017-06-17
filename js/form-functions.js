@@ -62,6 +62,15 @@
         '          <input type="radio" id="select-m-input" value="selectM" name="in-type" required />',
         '          <label for="select-m-input">Input de seleção múltipla</label>',
         '        </div>',
+        '        <hr class="pa-1-hr" />',
+        '        <div class="radio-group">',
+        '          <input type="radio" id="add-subtitle" value="subtitle" name="in-type" required />',
+        '          <label for="add-subtitle">Subtítulo de sessão</label>',
+        '        </div>',
+        '        <div class="radio-group">',
+        '          <input type="radio" id="add-paragraph" value="exp-paragraph" name="in-type" required />',
+        '          <label for="add-paragraph">Parágrafo explicativo</label>',
+        '        </div>',
         '      </div>',
         '',
         '      <footer class="form-footer">',
@@ -176,7 +185,7 @@
             var inType = $parent.find('input').attr('type');
 
             if (!inType) {
-              inType = $parent.find('textarea, select').prop('tagName').toLowerCase();
+              inType = $parent.find('textarea, select, .data-text').prop('tagName').toLowerCase();
             }
 
             console.log('Tipo: ' + inType);
@@ -278,6 +287,51 @@
               ].join('\n'))
                 .appendTo('body')
               ;
+            }
+
+            if (inType === 'p' || inType === 'h4') {
+
+              var expText = $parent.find('.data-text').text();
+
+              $editField = $([
+                '<div class="modal-wrap">',
+                '  <div class="modal edit-field">',
+                '    <h3>Editar o texto...</h3>',
+                '    <p class="part-obs">Complete os campos a seguir:</p>',
+                '    <form id="atributes-edition">',
+                '      <div class="modal-padding">',
+                '        <div class="form-group">',
+                '          <label for="edit-field-text">Texto:</label>',
+                '          <input id="edit-field-text" value="' + expText + '" required />',
+                '        </div>',
+                '      </div>',
+                '      <footer class="form-footer">',
+                '        <button type="submit" id="edit-finish">Salvar</button>',
+                '        <a href="javascript:void(0)" class="close-modal">Fechar</a>',
+                '      </footer>',
+                '    </form>',
+                '  </div>',
+                '  <div class="modal-overlay"></div>',
+                '</div>',
+              ].join('\n'))
+                .appendTo('body')
+              ;
+
+              $editField
+                .find('#atributes-edition')
+                  .on('submit', function (event) {
+                    event.preventDefault();
+
+                    var $form = $(this);
+                    var editedText = $form.find('#edit-field-text').val();
+
+                    $parent.find('.data-text').text(editedText);
+
+                    closeModal();
+                  })
+              ;
+
+              return;
             }
 
             if (inType === 'select') {
@@ -439,18 +493,17 @@
       ;
 
       $zone
-        .find('.fa-move-trigger')
+        .find('.fa-move-trigger, .input-edit-trigger')
           .on({
             mouseenter: function () {
               $(this)
                 .closest('.fa-form-group')
                   .attr('style', [
-                    '-webkit-box-shadow: inset 0 0 30px -9px rgba(0, 0, 0, 0.33);',
-                    '-moz-box-shadow: inset 0 0 30px -9px rgba(0, 0, 0, 0.33);',
-                    '-ms-box-shadow: inset 0 0 30px -9px rgba(0, 0, 0, 0.33);',
-                    '-o-box-shadow: inset 0 0 30px -9px rgba(0, 0, 0, 0.33);',
-                    'box-shadow: inset 0 0 30px -9px rgba(0, 0, 0, 0.33);',
-                    'border-radius: 99px;',
+                    '-webkit-box-shadow: inset 0 0 30px -9px rgb(0, 0, 0);',
+                    '-moz-box-shadow: inset 0 0 30px -9px rgb(0, 0, 0);',
+                    '-ms-box-shadow: inset 0 0 30px -9px rgb(0, 0, 0);',
+                    '-o-box-shadow: inset 0 0 30px -9px rgb(0, 0, 0);',
+                    'box-shadow: inset 0 0 30px -9px rgb(0, 0, 0);',
                   ].join(' '))
               ;
             },
@@ -623,7 +676,7 @@
               }
 
               $zone.append([
-                '<div class="fa-form-group">',
+                '<div class="fa-form-group clearfix">',
                 '  <label for="' + inputId + '">' + inputLabel + '</label>',
                 '  <input type="text" data-type="text" id="' + inputId + '" placeholder="' + inputPlaceholder + '" ' + inputRequired + ' />',
                 '</div>',
@@ -694,7 +747,7 @@
               }
 
               $zone.append([
-                '<div class="fa-form-group">',
+                '<div class="fa-form-group clearfix">',
                 '  <label for="' + inputId + '">' + inputLabel + '</label>',
                 '  <textarea data-type="textarea" id="' + inputId + '" placeholder="' + inputPlaceholder + '" ' + inputRequired + '></textarea>',
                 '</div>',
@@ -760,7 +813,7 @@
               }
 
               $zone.append([
-                '<div class="fa-form-group">',
+                '<div class="fa-form-group clearfix">',
                 '  <label for="' + inputId + '">' + inputLabel + '</label>',
                 '  <input type="date" data-type="date" id="' + inputId + '" ' + inputRequired + ' />',
                 '</div>',
@@ -816,7 +869,7 @@
               var inputLabel = $this.find('#input-label').val();
 
               $zone.append([
-                '<div class="fa-form-group">',
+                '<div class="fa-form-group clearfix">',
                 '  <label for="' + inputId + '">' + inputLabel + '</label>',
                 '  <input type="color" data-type="color" id="' + inputId + '" />',
                 '</div>',
@@ -897,7 +950,7 @@
               }
 
               $zone.append([
-                '<div class="fa-form-group">',
+                '<div class="fa-form-group clearfix">',
                 '  <label for="' + inputId + '">' + inputLabel + '</label>',
                 '  <input type="number" data-type="number" id="' + inputId + '" placeholder="' + inputPlaceholder + '" max="' + inputMax + '" min="' + inputMin + '" ' + inputRequired + ' />',
                 '</div>',
@@ -968,7 +1021,7 @@
               }
 
               $zone.append([
-                '<div class="fa-form-group">',
+                '<div class="fa-form-group clearfix">',
                 '  <label for="' + inputId + '">' + inputLabel + '</label>',
                 '  <select data-type="select" id="' + inputId + '" ' + inputRequired + ' /></select>',
                 '</div>',
@@ -1061,7 +1114,7 @@
               }
 
               $zone.append([
-                '<div class="fa-form-group">',
+                '<div class="fa-form-group clearfix">',
                 '  <label for="' + inputId + '">' + inputLabel + '</label>',
                 '  <select multiple data-type="select" id="' + inputId + '" ' + inputRequired + ' /></select>',
                 '</div>',
@@ -1091,6 +1144,118 @@
               });
 
               console.info('[Generator] Select (multiple) input generated successfully!');
+
+              closeModal();
+
+            })
+        ;
+      }
+
+      /*
+       * Criação dum subtítulo
+       */
+      if (type === 'subtitle') {
+
+        $addField
+          .find('h3')
+            .text('Crie o texto do seu subtítulo!')
+        ;
+
+        $addField
+          .find('.modal')
+            .append([
+              '<p class="part-obs">Você escolheu um <strong>subtítulo</strong>!</p>',
+              '<p class="part-obs">Complete os campos abaixo.</p>',
+              '<form class="configure-input">',
+              '  <div class="modal-padding">',
+              '    <div class="form-group">',
+              '      <label for="subtitle-text">Texto:</label>',
+              '      <input type="text" id="subtitle-text" />',
+              '    </div>',
+              '  </div>',
+              '  <footer class="form-footer">',
+              '    <button type="submit" class="button-create-new">Gerar Subtítulo</button>',
+              '    <a href="javascript:void(0)" class="reset-create-field">Voltar</a>',
+              '  </footer>',
+              '</form>',
+            ].join('\n'))
+        ;
+
+        /*
+         * Input tipo texto:
+         */
+        $addField
+          .find('.configure-input')
+            .on('submit', function (event) {
+              event.preventDefault();
+
+              var $this = $(this);
+              var subText = $this.find('#subtitle-text').val();
+
+              $zone.append([
+                '<div class="fa-form-group clearfix">',
+                '  <h4 class="form-subtitle data-text">' + subText +'</h4>',
+                '</div>',
+                '',
+              ].join('\n'));
+
+              console.info('[Generator] Subtitle generated successfully!');
+
+              closeModal();
+
+            })
+        ;
+      }
+
+      /*
+       * Criação dum parágrafo explicativo.
+       */
+      if (type === 'exp-paragraph') {
+
+        $addField
+          .find('h3')
+            .text('Crie o texto do seu parágrafo!')
+        ;
+
+        $addField
+          .find('.modal')
+            .append([
+              '<p class="part-obs">Você escolheu um <strong>parágrafo explicativo</strong>!</p>',
+              '<p class="part-obs">Complete os campos abaixo.</p>',
+              '<form class="configure-input">',
+              '  <div class="modal-padding">',
+              '    <div class="form-group">',
+              '      <label for="par-text">Texto:</label>',
+              '      <input type="text" id="par-text" />',
+              '    </div>',
+              '  </div>',
+              '  <footer class="form-footer">',
+              '    <button type="submit" class="button-create-new">Gerar Subtítulo</button>',
+              '    <a href="javascript:void(0)" class="reset-create-field">Voltar</a>',
+              '  </footer>',
+              '</form>',
+            ].join('\n'))
+        ;
+
+        /*
+         * Input tipo texto:
+         */
+        $addField
+          .find('.configure-input')
+            .on('submit', function (event) {
+              event.preventDefault();
+
+              var $this = $(this);
+              var parText = $this.find('#par-text').val();
+
+              $zone.append([
+                '<div class="fa-form-group clearfix">',
+                '  <p class="form-paragraph data-text">' + parText +'</p>',
+                '</div>',
+                '',
+              ].join('\n'));
+
+              console.info('[Generator] Exp.-paragraph generated successfully!');
 
               closeModal();
 
@@ -1363,12 +1528,37 @@
           '    .fa-form-group {',
           '      display: block;',
           '      width: 100%;',
-          '      background-color: #ddd;',
-          '      padding: 20px;',
+          '      padding: 0px 20px;',
           '    }',
-          '',
-          '    .fa-form-group:nth-child(odd) {',
-          '      background-color: #fff;',
+          '    ',
+          '    .fa-form-group *:last-child {',
+          '      margin-bottom: 7px;',
+          '    }',
+          '    ',
+          '    .fa-form-group h4 {',
+          '      font-size: 23px;',
+          '      color: #3072ab;',
+          '    }',
+          '    ',
+          '    .fa-form-group p {',
+          '      font-size: 16.4px;',
+          '      border-left: solid 3px #ddd;',
+          '      margin-left: -20px;',
+          '      padding-left: 17px;',
+          '      padding-top: 2px;',
+          '      padding-bottom: 2px;',
+          '    }',
+          '    ',
+          '    #fa-generated-form h1 {',
+          '      font-size: 35px;',
+          '      display: block;',
+          '      text-align: center;',
+          '      margin: 15px 0px;',
+          '      color: #ffffff;',
+          '      text-transform: uppercase;',
+          '      background-color: #3072ab;',
+          '      margin-top: 0px;',
+          '      font-weight: normal;',
           '    }',
           '',
           '    .fa-form-group label {',
@@ -1449,7 +1639,7 @@
           '',
           '  <form id="fa-generated-form">',
           '    <div class="fa-form-wrapper">',
-          '      <span style="font-size: 25px; display: block; text-align: center; margin: 15px 0px;">' + POSTformTitle + '</span>',
+          '      <h1>' + POSTformTitle + '</h1>',
           '      <!-- BEGIN Generated HTML Code -->',
           '      ' + $('.entry-prev').html().trim(),
           '      <!-- END Generated HTML Code -->',
@@ -1564,12 +1754,37 @@
           '    .fa-form-group {',
           '      display: block;',
           '      width: 100%;',
-          '      background-color: #ddd;',
-          '      padding: 20px;',
+          '      padding: 0px 20px;',
           '    }',
-          '',
-          '    .fa-form-group:nth-child(odd) {',
-          '      background-color: #fff;',
+          '    ',
+          '    .fa-form-group *:last-child {',
+          '      margin-bottom: 7px;',
+          '    }',
+          '    ',
+          '    .fa-form-group h4 {',
+          '      font-size: 23px;',
+          '      color: #3072ab;',
+          '    }',
+          '    ',
+          '    .fa-form-group p {',
+          '      font-size: 16.4px;',
+          '      border-left: solid 3px #ddd;',
+          '      margin-left: -20px;',
+          '      padding-left: 17px;',
+          '      padding-top: 2px;',
+          '      padding-bottom: 2px;',
+          '    }',
+          '    ',
+          '    #fa-generated-form h1 {',
+          '      font-size: 35px;',
+          '      display: block;',
+          '      text-align: center;',
+          '      margin: 15px 0px;',
+          '      color: #ffffff;',
+          '      text-transform: uppercase;',
+          '      background-color: #3072ab;',
+          '      margin-top: 0px;',
+          '      font-weight: normal;',
           '    }',
           '',
           '    .fa-form-group label {',
@@ -1650,7 +1865,7 @@
           '',
           '  <form id="fa-generated-form">',
           '    <div class="fa-form-wrapper">',
-          '      <span style="font-size: 25px; display: block; text-align: center; margin: 15px 0px;">' + REPLYformTitle + '</span>',
+          '      <h1>' + REPLYformTitle + '</h1>',
           '      <!-- BEGIN Generated HTML Code -->',
           '      ' + $('.entry-prev').html().trim(),
           '      <!-- END Generated HTML Code -->',
