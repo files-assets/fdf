@@ -1,6 +1,6 @@
 # Inputs (radio & checkbox) personalizados
 
-O tutorial irá personalizar os inputs de tipo `radio` e `checkbox` usando ícones da [FontAwesome](http://fontawesome.io/).
+O tutorial irá personalizar os inputs de tipo `radio` e `checkbox` usando ícones da [FontAwesome](http://fontawesome.io/).  
 Clique [aqui](https://i.imgur.com/WnocLpR.png) para ver o resultado.
 
 
