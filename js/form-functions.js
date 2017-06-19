@@ -1365,9 +1365,9 @@
 
     /*
      * Botão da parte 1 que leva à 2:
-     */
+     */   
     $('#create-text-btn, #step-2, #back-to-2').on('click', function () {
-      if ($('.entry-prev').find('.fa-form-group').length === 0 ) {
+      if ($('.entry-prev').find('.fa-form-group input, .fa-form-group select, .fa-form-group textarea').length === 0) {
         alert('Você deve criar ao menos um campo!');
         return;
       }
@@ -1517,7 +1517,6 @@
           '      margin: 0 auto;',
           '      background-color: #fff;',
           '      border: solid 1px #ddd;',
-          '      border-top: none;',
           '      border-radius: 0 0 3px 3px;',
           '    }',
           '',
@@ -1743,7 +1742,6 @@
           '      margin: 0 auto;',
           '      background-color: #fff;',
           '      border: solid 1px #ddd;',
-          '      border-top: none;',
           '      border-radius: 0 0 3px 3px;',
           '    }',
           '',
