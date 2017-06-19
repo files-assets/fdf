@@ -1946,5 +1946,7 @@
         return trigger.nextElementSibling;
       }
     });
+    
+    console.info('Scripts requeridos carregados com sucesso!');
   });
 }(jQuery));
