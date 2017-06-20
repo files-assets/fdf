@@ -71,11 +71,6 @@
           .on('click', function (event) {
             event.stopPropagation();
             event.preventDefault();
-
-            var $label = $(this);
-            var attr = $label.attr('for');
-
-            $('#' + attr).focus();
           })
       ;
 
