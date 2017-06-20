@@ -317,10 +317,6 @@
                 '</div>',
               ].join('\n'))
                 .appendTo('body')
-                  .find('.close-modal')
-                    .on('click', function () {
-                      closeModal();
-                    })
               ;
 
               $editField
@@ -335,6 +331,11 @@
 
                     closeModal();
                   })
+              ;
+
+              $editField
+                .find('.close-modal')
+                  .on('click', closeModal)
               ;
 
               return;
@@ -1951,6 +1952,6 @@
       }
     });
     
-    console.info('Scripts requeridos carregados com sucesso!');
+    console.info('Scripts requeridos carregados com sucesso!\nCorreção feita.');
   });
 }(jQuery));
