@@ -201,40 +201,38 @@
               requiredCheckbox = '<input type="checkbox" id="is-required-modal" />';
             }
 
-            if (!inType === 'select' || !inType === 'h4' || !inType === 'p' || !inType === 'number') {
-              $editField = $([
-                '<div class="modal-wrap">',
-                '  <div class="modal edit-field">',
-                '    <h3>Editar o campo...</h3>',
-                '    <p class="part-obs">Edite os atributos do campo selecionado a seguir:</p>',
-                '    <form id="atributes-edition">',
-                '      <div class="modal-padding">',
-                '        <div class="form-group">',
-                '          <label for="edit-input-label">Label:</label>',
-                '          <input id="edit-input-label" value="' + label + '" required />',
-                '        </div>',
-                '        <div class="form-group placeholder-edit">',
-                '          <label for="edit-input-placeholder">Placeholder:</label>',
-                '          <input id="edit-input-placeholder" value="' + placeholder + '" />',
-                '        </div>',
-                '        <div class="form-group required-check">',
-                '          <label for="is-required-modal">Requerido?</label>',
-                '          ' + requiredCheckbox,
-                '          <label for="is-required-modal" class="pseudo-checkbox-edition"></label>',
-                '        </div>',
-                '      </div>',
-                '      <footer class="form-footer">',
-                '        <button type="submit" id="edit-finish">Salvar</button>',
-                '        <a href="javascript:void(0)" class="close-modal">Fechar</a>',
-                '      </footer>',
-                '    </form>',
-                '  </div>',
-                '  <div class="modal-overlay"></div>',
-                '</div>',
-              ].join('\n'))
-                .appendTo('body')
-              ;
-            }
+            $editField = $([
+              '<div class="modal-wrap">',
+              '  <div class="modal edit-field">',
+              '    <h3>Editar o campo...</h3>',
+              '    <p class="part-obs">Edite os atributos do campo selecionado a seguir:</p>',
+              '    <form id="atributes-edition">',
+              '      <div class="modal-padding">',
+              '        <div class="form-group">',
+              '          <label for="edit-input-label">Label:</label>',
+              '          <input id="edit-input-label" value="' + label + '" required />',
+              '        </div>',
+              '        <div class="form-group placeholder-edit">',
+              '          <label for="edit-input-placeholder">Placeholder:</label>',
+              '          <input id="edit-input-placeholder" value="' + placeholder + '" />',
+              '        </div>',
+              '        <div class="form-group required-check">',
+              '          <label for="is-required-modal">Requerido?</label>',
+              '          ' + requiredCheckbox,
+              '          <label for="is-required-modal" class="pseudo-checkbox-edition"></label>',
+              '        </div>',
+              '      </div>',
+              '      <footer class="form-footer">',
+              '        <button type="submit" id="edit-finish">Salvar</button>',
+              '        <a href="javascript:void(0)" class="close-modal">Fechar</a>',
+              '      </footer>',
+              '    </form>',
+              '  </div>',
+              '  <div class="modal-overlay"></div>',
+              '</div>',
+            ].join('\n'))
+              .appendTo('body')
+            ;
 
             if (inType === 'date' || inType === 'color' || inType === 'select') {
               $('.placeholder-edit').remove();
@@ -1956,6 +1954,6 @@
       }
     });
     
-    console.info('Scripts requeridos carregados com sucesso!\n[#2]');
+    console.info('Scripts requeridos carregados com sucesso!\n[#3]');
   });
 }(jQuery));
