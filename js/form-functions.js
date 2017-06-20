@@ -320,7 +320,6 @@
                   .find('.close-modal')
                     .on('click', function () {
                       closeModal();
-                      return false;
                     })
               ;
 
