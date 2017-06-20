@@ -293,6 +293,10 @@
 
             if (inType === 'p' || inType === 'h4') {
 
+              if ($('.modal-wrap').length > 0) {
+                $('.modal-wrap').remove();
+              }
+
               var expText = $parent.find('.data-text').text();
 
               $editField = $([
@@ -334,7 +338,7 @@
               ;
 
               $editField
-                .find('.close-modal')
+                .find('.modal-overlay, .close-modal')
                   .on('click', closeModal)
               ;
 
@@ -1952,6 +1956,6 @@
       }
     });
     
-    console.info('Scripts requeridos carregados com sucesso!\nCorreção feita.');
+    console.info('Scripts requeridos carregados com sucesso!\n[#2]');
   });
 }(jQuery));
