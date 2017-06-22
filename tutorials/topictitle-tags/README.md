@@ -2,7 +2,7 @@
 
 **Título Explicativo: _Criar tags para os títulos dos tópicos e um painel para escolher a tag acima do editor._**
 
-O tutorial irá permitir que o usuário crie um painel acima do editor de texto (_SCEditor_), para poder selecionar uma tag para seu tópico. Após salvar, a tag irá aparecer no título do tópico automaticamente.
+O tutorial irá permitir que o usuário crie um painel acima do editor de texto (_SCEditor_), para poder selecionar uma tag para seu tópico. Após salvar, a tag irá aparecer no título do tópico automaticamente.  
 Clique [aqui](http://i.imgur.com/H1zoNDr.gif) para ver o resultado em forma de `.gif`.
 
 
