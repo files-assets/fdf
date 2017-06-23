@@ -7,7 +7,7 @@
  */
 (function ($) {
   'use strict';
-
+ 
   var tags = [
     {
       tag: 'imagem',
@@ -18,10 +18,10 @@
       background: '#000'
     }
   ];
-
+ 
   $(function () {
     var counter = 1;
-
+ 
     /**
      * Parte 1.
      * Aqui nós criamos o seletor de tags acima do editor:
@@ -30,15 +30,19 @@
       // Criar a zona para colocar-se os inputs:
       var $textarea = $('#textarea_content');
       var $title = $('form [name="subject"]');
+      var $createZone = $title.parents('dl');
       var $zone = $([
-        '<div class="fa-icon-selector">',
-        '  <div class="fa-icon-selector-inner">',
-        '  </div>',
-        '</div>',
+        '<dl class="fa-icon-selector">',
+        '  <dt>',
+        '    <label>Tag do tópico</label>',
+        '  </dt>',
+        '  <dd class="fa-icon-selector-inner">',
+        '  </dd>',
+        '</dl>',
       ].join('\n'))
-        .prependTo($textarea)
+        .insertAfter($createZone)
       ;
-
+ 
       // Criar-se os inputs dentro da zona criada anteriormente:
       var $appendZone = $zone.find('.fa-icon-selector-inner');
       $.each(tags, function (index, tag) {
@@ -53,14 +57,14 @@
         
         counter++;
       });
-
+ 
       // Função para dar focus num input X caso este seja a tag dum tópico X:
       if (/^\[.*\]/gi.test($title.val())) {
         $title.val().replace(/^\[(.*)\]/gi, function (find, match) {
           $('[data-tag="' + match + '"]').prop('checked', true);
         });
       }
-
+ 
       // Trigger para a adição/edição do prefixo no input de título:
       $zone
         .find('input.select-tag-input')
@@ -68,10 +72,10 @@
             setPrefix($(this).attr('data-tag'));
           })
       ;
-
+ 
       // Função para setar/editar o prefixo:
       var setPrefix = function (prefix) {
-
+ 
         if (/^\[.*\]/gi.test($title.val())) {
           $title.val($title.val().replace(/^\[.*\]/gi, function () {
             return '[' + prefix + ']';
@@ -83,30 +87,30 @@
         $title.val('[' + prefix + '] ' + $title.val().trim());
       };
     }
-
+ 
     /**
      * Parte 2.
      * Aqui nós iremos substituir a tag entre os colchetes por uma tag real:
      */
     var $link = $('a[href^="/t"]');
     $link.each(function () {
-
+ 
       var $this = $(this);
-
+ 
       $.each(tags, function (index, tag) {
         var regex = new RegExp ('\\[' + tag.tag + '\\]', 'gim');
         var text = $this.text();
-
+ 
         if (!regex.test(text)) {
           return;
         }
-
+ 
         $this.addClass('fa-tagged-link');
         $this.text(text.trim().replace(regex, ''));
         $this.prepend('<span class="fa-topic-tag" style="background-color: ' + tag.background + ';">' + tag.tag + '</span>');
       });
     });
-
+ 
     /**
      * Parte 3:
      * Estilos.
@@ -143,7 +147,7 @@
       '  text-decoration: none!important',
       '}'
     ].join('\n');
-
+ 
     $(['<style type="text/css">', styles, '</style>'].join('\n')).appendTo('head');
     
   });
