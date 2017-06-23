@@ -17,13 +17,12 @@
     ].join('\n')
   };
 
-  // .mod-text
-
   $(function () {
 
     var $faNotifyTrigger = $('<a>', {
       href: 'javascript:void(0)',
       id: 'fa-custom-notification-trigger',
+      html: '<span class="pmlist-qtt">1</span>',
       class: 'fa fa-bell'
     })
       .insertAfter('#fa_notifications')
@@ -92,6 +91,19 @@
             ;
           }
 
+          var notifyCount = $faNotifyContent
+            .find('.fa-notify-list .notify-item')
+              .length
+          ;
+
+          my_setcookie('fa_mplist_count', notifyCount);
+          var cookiedPmlistCount = my_getcookie('fa_mplist_count');
+
+          $faNotifyTrigger
+            .find('span')
+              .text(cookiedPmlistCount)
+          ;
+
         });
 
       })
@@ -101,6 +113,8 @@
     ;
 
     var styles = [
+      '@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);',
+      '',
       '.hidden {',
       '  display: none;',
       '}',
@@ -113,6 +127,18 @@
       '  margin-left: 19px;',
       '  border-radius: 3px;',
       '  padding: 2px;',
+      '  position: relative;',
+      '}',
+      '',
+      'a#fa-custom-notification-trigger span {',
+      '  position: absolute;',
+      '  background-color: #e54732;',
+      '  color: #fff;',
+      '  font-size: 10px;',
+      '  font-family: Arial, sans-serif;',
+      '  padding: 1px 3.5px;',
+      '  line-height: 11px;',
+      '  border-radius: 999px;',
       '}',
       '',
       'a#fa-custom-notification-trigger:hover {',
