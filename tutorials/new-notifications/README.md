@@ -1,4 +1,4 @@
-# Inputs (radio & checkbox) personalizados
+# Notificações personalizadas
 
 O tutorial irá modificar a forma em que as notificações são exibidas na **barra de ferramenta** nos fóruns forumeiros.  
 Frisa-se que para o bom funcionamento deste tutorial, a barra de ferramentas **deve estar ativada**, e de preferência, ter a fontawesome instalada em seu fórum.  
