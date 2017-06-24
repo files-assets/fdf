@@ -62,6 +62,13 @@
         })
     ;
 
+    var cookiedPmlistCount = my_getcookie('fa_mplist_count');
+
+    $faNotifyTrigger
+      .find('span')
+        .text(cookiedPmlistCount)
+    ;
+
     $.get('/profile', {
       mode: 'editprofile',
       page_profil: 'notifications'
