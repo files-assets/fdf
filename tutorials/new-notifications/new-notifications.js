@@ -17,12 +17,12 @@
     ].join('\n')
   };
 
-  $(function () {
+  $(window).on('load', function () {
 
     var $faNotifyTrigger = $('<a>', {
       href: 'javascript:void(0)',
       id: 'fa-custom-notification-trigger',
-      html: '<span class="pmlist-qtt">1</span>',
+      html: '<span class="pmlist-qtt">0</span>',
       class: 'fa fa-bell'
     })
       .insertAfter('#fa_notifications')
@@ -32,7 +32,6 @@
         })
     ;
 
-    $('#fa_notifications').attr('style', 'display: none !important');
     $(document).on('click', function () {
       if ($('.fa-notify-wrapper').is('.hidden')) {
         return;
@@ -63,11 +62,12 @@
     ;
 
     var cookiedPmlistCount = my_getcookie('fa_mplist_count');
-
-    $faNotifyTrigger
-      .find('span')
-        .text(cookiedPmlistCount)
-    ;
+    if (cookiedPmlistCount) {
+      $faNotifyTrigger
+        .find('span')
+          .text(cookiedPmlistCount)
+      ;
+    }
 
     $.get('/profile', {
       mode: 'editprofile',
@@ -122,8 +122,17 @@
     var styles = [
       '@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);',
       '',
-      '.hidden {',
-      '  display: none;',
+      '.hidden,',
+      'html body div #fa_notifications {',
+      '  opacity: 0!important;',
+      '  pointer-events: none!important;',
+      '}',
+      'a#fa_welcome {',
+      '  margin-right: 25px;',
+      '}',
+      '',
+      'div#fa_toolbar {',
+      '  position: relative;',
       '}',
       '',
       'a#fa-custom-notification-trigger {',
@@ -134,7 +143,10 @@
       '  margin-left: 19px;',
       '  border-radius: 3px;',
       '  padding: 2px;',
-      '  position: relative;',
+      '  right: 64px;',
+      '  top: 50%;',
+      '  transform: translateY(-70%);',
+      '  position: absolute;',
       '}',
       '',
       'a#fa-custom-notification-trigger span {',
@@ -156,9 +168,9 @@
       '',
       '.fa-notify-wrapper {',
       '  position: fixed;',
-      '  top: 45px;',
+      '  top: 57px;',
       '  z-index: 9999;',
-      '  right: 25px;',
+      '  right: 50px;',
       '  background-color: #fff;',
       '  border: solid 1px #ddd;',
       '  border-radius: 3px;',
@@ -169,7 +181,8 @@
       '  box-shadow: inset 0px -15px #ddd;',
       '}',
       '',
-      '.fa-notify-wrapper, .fa-notify-wrapper * {',
+      '.fa-notify-wrapper,',
+      '.fa-notify-wrapper * {',
       '  box-sizing: border-box;',
       '}',
       '',
