@@ -1,0 +1,11 @@
+{
+  "name": "tutorials",
+  "version": "undefined",
+  "description": "Diversos códigos JavaScript e CSS para instalar em fóruns forumeiros.",
+  "private": true,
+  "author": "Luiz Felipe (Luiz~)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jquery": "^2.0.34",
+  }
+}
