@@ -1,6 +1,6 @@
 /*globals jQuery, Clipboard*/
 /*
- * @author Luiz~
+ * @author Luiz (http://ajuda.forumeiros.com/u60563)
  */
 (function ($) {
   'use strict';
@@ -1490,7 +1490,7 @@
           '<!-- ->',
           '/*',
           ' * Gerado em <ajuda.forumeiros.com>.',
-          ' * Gerador (2.0) feito por Luiz~',
+          ' * Gerador (2.0) feito por Luiz (http://ajuda.forumeiros.com/u60563)',
           ' */',
           '<- -->',
           '<head>',
@@ -1715,7 +1715,7 @@
           '<!-- ->',
           '/*',
           ' * Gerado em <ajuda.forumeiros.com>.',
-          ' * Gerador (2.0) feito por Luiz~',
+          ' * Gerador (2.0) feito por Luiz (http://ajuda.forumeiros.com/u60563)',
           ' */',
           '<- -->',
           '<head>',
@@ -1908,7 +1908,8 @@
           '    				  post: 1,',
           '    		  	}).done(function () {',
           '    				  alert(\'Postado com sucesso. Você será redirecionado para o tópico...\');',
-          '    				  location.pathname = \'/t' + REPLYtopicValue + '-?view=newest\';',
+          '    				  location.pathname = \'/t' + REPLYtopicValue + '-\';',
+          '    				  location.search = \'view=newest\';',
           '    			  }).fail(function () {',
           '    				  alert(\'Houve um erro! Tente novamente!\');',
           '    			  });',
