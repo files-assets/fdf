@@ -31,8 +31,8 @@
     },
 
     /**
-    * Ação AJAX ao clicar no link pela primeira vez após atualizar a página.
-    */
+     * Ação AJAX ao clicar no link pela primeira vez após atualizar a página.
+     */
     ajaxInit: function () {
 
       members.checkCount();
@@ -92,8 +92,8 @@
     },
 
     /**
-    * Ação ao clicar no botão de voltar à página anterior.
-    */
+     * Ação ao clicar no botão de voltar à página anterior.
+     */
     ajaxPrev: function () {
 
       members.checkCount('minus');
@@ -152,8 +152,8 @@
     },
 
     /**
-    * Ação ao clicar no botão de próxima página.
-    */
+     * Ação ao clicar no botão de próxima página.
+     */
     ajaxNext: function () {
 
       members.checkCount('plus');
@@ -212,8 +212,8 @@
     },
 
     /**
-    * Ajax para procurar um usuário:
-    */
+     * Ajax para procurar um usuário:
+     */
     ajaxFind: function (username) {
 
       $.ajax({
@@ -541,8 +541,8 @@
     });
 
     /**
-    * Criação dos estilos.
-    */
+     * Criação dos estilos.
+     */
     members.style = [
       '.fa-members-find {',
       '  display: block;',
@@ -757,8 +757,8 @@
     ].join('\n');
 
     /**
-    * Criação dos estilos no <head>:
-    */
+     * Criação dos estilos no <head>:
+     */
     $(['<style type="text/css">', members.style, '</style>'].join('\n')).appendTo('head');
   });
 }(jQuery));
