@@ -345,11 +345,11 @@
     
   };
 
-  if (_userdata["session_logged_in"] === 0 && members.config.only_members) {
-    return false;
-  }
-
   $(function () {
+
+    if (_userdata["session_logged_in"] === 0 && members.config.only_members) {
+      return false;
+    }
 
     /**
      * HTML da lista de "contatos".
