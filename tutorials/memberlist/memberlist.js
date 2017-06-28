@@ -706,7 +706,7 @@
       '.disabled {',
       '  opacity: .9;',
       '  filter: blur(.5px);',
-      '  cursor: not-allowed;',
+      '  cursor: not-allowed !important;',
       '}',
       '',
       '.disabled:hover {',
