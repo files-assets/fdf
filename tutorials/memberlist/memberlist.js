@@ -544,6 +544,10 @@
      * Criação dos estilos.
      */
     members.style = [
+      '.fa-memberlist-inner a {',
+      '  cursor: pointer;',
+      '}',
+      '',
       '.fa-members-find {',
       '  display: block;',
       '  background-color: #cde6f3;',
