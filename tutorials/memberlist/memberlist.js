@@ -345,7 +345,7 @@
     
   };
 
-  if (_userdata["user_id"] === -1 && members.config.only_members) {
+  if (_userdata["session_logged_in"] === 0 && members.config.only_members) {
     return false;
   }
 
