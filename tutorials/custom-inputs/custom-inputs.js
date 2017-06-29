@@ -4,7 +4,7 @@
  * @author Luiz~
  * @author Kyo Panda
  *
- * @version 2.0
+ * @version 2.1
  * @see <a href="http://ajuda.forumeiros.com/">Fórum dos Fóruns</a>
  * @licence MIT
  */
@@ -21,7 +21,8 @@
     '}',
     '',
     '.fa-custom-label input {',
-    '  display: none;',
+    '  position: absolute;',
+    '  opacity: 0;',
     '}',
     '',
     '.fa-custom-label.fa-label-checkbox input:checked ~ span.fa-input-icon i::before {',
